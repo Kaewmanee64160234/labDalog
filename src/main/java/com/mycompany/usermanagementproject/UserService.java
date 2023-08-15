@@ -24,8 +24,17 @@ public class UserService {
         userList.add(newUser);
         return newUser;
     }
-    public User getUser(int index){
-    return userList.get(index);
+
+    public User getUser(int index) {
+        return userList.get(index);
+    }
+
+    public ArrayList<User> getUsers() {
+        return userList;
+    }
+
+    public int getSize() {
+        return userList.size();
     }
 
 }
