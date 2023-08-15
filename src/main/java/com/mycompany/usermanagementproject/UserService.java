@@ -24,5 +24,8 @@ public class UserService {
         userList.add(newUser);
         return newUser;
     }
+    public User getUser(int index){
+    return userList.get(index);
+    }
 
 }
