@@ -363,7 +363,28 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void btnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewActionPerformed
         // TODO add your handling code here:
-        String login = txtLogin.getText();
+     
+
+    }//GEN-LAST:event_btnAddNewActionPerformed
+
+    private void btnEidtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEidtActionPerformed
+        int index = tableUser.getSelectedRow();
+        System.out.println(userService.getUser(index));
+    }//GEN-LAST:event_btnEidtActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+         clearForm();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+           String login = txtLogin.getText();
         String name = txtName.getText();
         String password = new String(txtPassword.getPassword());
 
@@ -377,25 +398,6 @@ public class UserFrame extends javax.swing.JFrame {
         }
         User newUser = new User(login, name, password, gander, role);
         System.out.println(newUser.toString());
-
-    }//GEN-LAST:event_btnAddNewActionPerformed
-
-    private void btnEidtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEidtActionPerformed
-        int index = tableUser.getSelectedRow();
-        System.out.println(userService.getUser(index));
-    }//GEN-LAST:event_btnEidtActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        clearForm();
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveActionPerformed
     private void clearForm() {
         txtLogin.setText("");
