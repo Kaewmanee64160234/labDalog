@@ -80,7 +80,7 @@ public class UserFrame extends javax.swing.JFrame {
 
         };
         tableUser.setModel(model);
-
+        enableForm(false);
     }
 
     /**
@@ -106,11 +106,13 @@ public class UserFrame extends javax.swing.JFrame {
         comboRole = new javax.swing.JComboBox<>();
         radioMale = new javax.swing.JRadioButton();
         radioFemale = new javax.swing.JRadioButton();
+        btnClear = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUser = new javax.swing.JTable();
-        btnClear = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnAddNew = new javax.swing.JButton();
         btnEidt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,6 +170,24 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
+        btnClear.setBackground(new java.awt.Color(255, 153, 153));
+        btnClear.setText("Clear");
+        btnClear.setActionCommand("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnSave.setBackground(new java.awt.Color(153, 255, 153));
+        btnSave.setText("Save");
+        btnSave.setActionCommand("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -198,12 +218,17 @@ public class UserFrame extends javax.swing.JFrame {
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(btnClear)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSave))
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(radioMale, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(radioFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +251,11 @@ public class UserFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(comboRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnClear))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         tableUser.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,19 +271,19 @@ public class UserFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableUser);
 
-        btnClear.setBackground(new java.awt.Color(255, 153, 153));
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(new java.awt.Color(255, 153, 153));
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        btnSave.setBackground(new java.awt.Color(153, 255, 153));
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        btnAddNew.setBackground(new java.awt.Color(153, 255, 153));
+        btnAddNew.setText("Add New");
+        btnAddNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
+                btnAddNewActionPerformed(evt);
             }
         });
 
@@ -273,11 +302,11 @@ public class UserFrame extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnClear)
+                .addComponent(btnDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEidt)
                 .addGap(8, 8, 8)
-                .addComponent(btnSave)
+                .addComponent(btnAddNew)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -287,8 +316,8 @@ public class UserFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnClear)
+                    .addComponent(btnAddNew)
+                    .addComponent(btnDelete)
                     .addComponent(btnEidt))
                 .addGap(241, 241, 241))
         );
@@ -332,7 +361,7 @@ public class UserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_radioFemaleActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewActionPerformed
         // TODO add your handling code here:
         String login = txtLogin.getText();
         String name = txtName.getText();
@@ -349,17 +378,25 @@ public class UserFrame extends javax.swing.JFrame {
         User newUser = new User(login, name, password, gander, role);
         System.out.println(newUser.toString());
 
-    }//GEN-LAST:event_btnSaveActionPerformed
+    }//GEN-LAST:event_btnAddNewActionPerformed
 
     private void btnEidtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEidtActionPerformed
         int index = tableUser.getSelectedRow();
         System.out.println(userService.getUser(index));
     }//GEN-LAST:event_btnEidtActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         clearForm();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
     private void clearForm() {
         txtLogin.setText("");
         txtName.setText("");
@@ -367,6 +404,18 @@ public class UserFrame extends javax.swing.JFrame {
         comboRole.setSelectedIndex(0);
         radioMale.setSelected(true);
         txtLogin.requestFocus();
+    }
+
+    private void enableForm(boolean isEnable) {
+        txtLogin.setEnabled(isEnable);
+        txtName.setEnabled(isEnable);
+        txtPassword.setEnabled(isEnable);
+        comboRole.setEnabled(isEnable);
+        radioMale.setEnabled(isEnable);
+        radioFemale.setEnabled(isEnable);
+
+        btnClear.setEnabled(isEnable);
+        btnSave.setEnabled(isEnable);
     }
 
     /**
@@ -406,7 +455,9 @@ public class UserFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgGender;
+    private javax.swing.JButton btnAddNew;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEidt;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> comboRole;
