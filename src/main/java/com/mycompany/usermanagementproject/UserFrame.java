@@ -26,33 +26,37 @@ public class UserFrame extends javax.swing.JFrame {
         userService.addUser(newUser2);
         userService.addUser(newUser3);
         userService.addUser(newUser1);
-    
-        tableUser.setModel(new AbstractTableModel(){
+
+        tableUser.setModel(new AbstractTableModel() {
             @Override
             public int getRowCount() {
-                return  userService.getSize();
+                return userService.getSize();
             }
 
             @Override
             public int getColumnCount() {
-               return 6;
+                return 5;
             }
 
             @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
                 User user = userService.getUser(rowIndex);
-                if(columnIndex == 0){
+                if (columnIndex == 0) {
                     return user.getId();
-                    
-                }else if(columnIndex == 1){
+
+                } else if (columnIndex == 1) {
                     return user.getLogin();
-                
-                 }else if(columnIndex == 2){
+
+                } else if (columnIndex == 2) {
                     return user.getName();
+                } else if (columnIndex == 3) {
+                    return user.getGender();
+                } else if (columnIndex == 4) {
+                    return user.getRole();
                 }
-                return  " ";
+                return "";
             }
-        
+
         });
 
     }
