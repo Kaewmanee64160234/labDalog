@@ -45,8 +45,14 @@ public class UserService {
 
     }
 
-    void updateUser(int userEditedIndex, User newUser) {
-        userList.set(userEditedIndex, newUser);
+    void updateUser(int index, User updateUser) {
+       
+      User user = userList.get(index);
+      user.setLogin(updateUser.getLogin());
+      user.setName(updateUser.getName());
+      user.setPassword(updateUser.getPassword());
+      user.setGender(updateUser.getGender());
+      user.setRole(updateUser.getRole());
         
     }
     User deleteUser(int index){

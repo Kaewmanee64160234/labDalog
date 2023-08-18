@@ -427,20 +427,23 @@ public class UserFrame extends javax.swing.JFrame {
             gander = 'F';
         }
         User newUser = new User(login, name, password, gander, role);
-        System.out.println(newUser.toString());
+//        System.out.println(newUser.toString());
         if (userEditedIndex < 0) {
 
             userService.addUser(newUser);
-            userService.logUserList();
+//            userService.logUserList();
         } else {
+            System.out.println(userEditedIndex);
+
             userService.updateUser(userEditedIndex, newUser);
             userEditedIndex = -1;
+
             labelId.setText(userEditedIndex + "");
         }
-
         model.fireTableDataChanged();
         clearForm();
         enableForm(false);
+     
     }//GEN-LAST:event_btnSaveActionPerformed
     private void clearForm() {
         txtLogin.setText("");
