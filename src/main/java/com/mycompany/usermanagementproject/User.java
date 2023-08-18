@@ -4,6 +4,8 @@
  */
 package com.mycompany.usermanagementproject;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author USER
@@ -17,6 +19,7 @@ public class User {
     private char gender;
     private char role;
     private static int lastId = 1;
+
 
     public User(String login, String name, String password, char gender, char role) {
         this(User.lastId++, login, name, password, gender, role);
@@ -110,5 +113,6 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", login=" + login + ", name=" + name + ", password=" + password + ", gender=" + gender + ", role=" + role + '}';
     }
+
 
 }

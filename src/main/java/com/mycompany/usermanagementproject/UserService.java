@@ -37,4 +37,11 @@ public class UserService {
         return userList.size();
     }
 
+    public void logUserList() {
+        for (User user : userList) {
+            System.out.println(user);
+
+        }
+
+    }
 }
