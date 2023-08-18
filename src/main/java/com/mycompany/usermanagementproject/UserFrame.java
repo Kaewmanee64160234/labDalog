@@ -377,9 +377,9 @@ public class UserFrame extends javax.swing.JFrame {
     private void btnEidtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEidtActionPerformed
 
         userEditedIndex = tableUser.getSelectedRow();
-      
+
         User editUser = userService.getUser(userEditedIndex);
-          labelId.setText(editUser.getId()+"");
+        labelId.setText(editUser.getId() + "");
         txtLogin.setText(editUser.getLogin());
         txtName.setText(editUser.getName());
         txtPassword.setText(editUser.getPassword());
@@ -401,6 +401,9 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int index = tableUser.getSelectedRow();
+        userService.deleteUser(index);
+        model.fireTableDataChanged();
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -431,8 +434,8 @@ public class UserFrame extends javax.swing.JFrame {
             userService.logUserList();
         } else {
             userService.updateUser(userEditedIndex, newUser);
-            userEditedIndex=-1;
-              labelId.setText(userEditedIndex+"");
+            userEditedIndex = -1;
+            labelId.setText(userEditedIndex + "");
         }
 
         model.fireTableDataChanged();

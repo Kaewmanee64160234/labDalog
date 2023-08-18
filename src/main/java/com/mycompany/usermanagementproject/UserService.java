@@ -49,4 +49,7 @@ public class UserService {
         userList.set(userEditedIndex, newUser);
         
     }
+    User deleteUser(int index){
+       return userList.remove(index);
+    }
 }
