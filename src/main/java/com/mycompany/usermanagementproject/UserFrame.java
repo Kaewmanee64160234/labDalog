@@ -13,6 +13,7 @@ import javax.swing.table.AbstractTableModel;
 public class UserFrame extends javax.swing.JFrame {
 
     private final AbstractTableModel model;
+    private int userEditedIndex = -1;
 
     /**
      * Creates new form UserFrame
@@ -95,7 +96,7 @@ public class UserFrame extends javax.swing.JFrame {
         bgGender = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelId = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -121,7 +122,7 @@ public class UserFrame extends javax.swing.JFrame {
 
         jLabel1.setText("ID : ");
 
-        jLabel2.setText("-1");
+        labelId.setText("-1");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Login:");
@@ -198,7 +199,7 @@ public class UserFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -236,7 +237,7 @@ public class UserFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(labelId)
                     .addComponent(jLabel3)
                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
@@ -369,28 +370,46 @@ public class UserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         enableForm(true);
         txtLogin.requestFocus();
-     
+
 
     }//GEN-LAST:event_btnAddNewActionPerformed
 
     private void btnEidtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEidtActionPerformed
-        int index = tableUser.getSelectedRow();
-        System.out.println(userService.getUser(index));
+
+        userEditedIndex = tableUser.getSelectedRow();
+        User editUser = userService.getUser(userEditedIndex);
+        txtLogin.setText(editUser.getLogin());
+        txtName.setText(editUser.getName());
+        txtPassword.setText(editUser.getPassword());
+        enableForm(true);
+
+        if (editUser.getRole() == 'U') {
+            comboRole.setSelectedIndex(0);
+
+        } else {
+            comboRole.setSelectedIndex(1);
+        }
+        if (editUser.getGender() == 'M') {
+            radioMale.setSelected(true);
+        } else {
+            radioFemale.setSelected(true);
+        }
+        txtLogin.requestFocus();
     }//GEN-LAST:event_btnEidtActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-         clearForm();
+        clearForm();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-           String login = txtLogin.getText();
+        String login = txtLogin.getText();
         String name = txtName.getText();
         String password = new String(txtPassword.getPassword());
 
@@ -404,8 +423,15 @@ public class UserFrame extends javax.swing.JFrame {
         }
         User newUser = new User(login, name, password, gander, role);
         System.out.println(newUser.toString());
-        userService.addUser(newUser);
-        userService.logUserList();
+        if (userEditedIndex < 0) {
+
+            userService.addUser(newUser);
+            userService.logUserList();
+        } else {
+            userService.updateUser(userEditedIndex, newUser);
+            userEditedIndex=-1;
+        }
+
         model.fireTableDataChanged();
         clearForm();
         enableForm(false);
@@ -475,7 +501,6 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> comboRole;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -483,6 +508,7 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelId;
     private javax.swing.JRadioButton radioFemale;
     private javax.swing.JRadioButton radioMale;
     private javax.swing.JTable tableUser;

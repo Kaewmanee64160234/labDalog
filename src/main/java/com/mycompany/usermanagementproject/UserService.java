@@ -44,4 +44,9 @@ public class UserService {
         }
 
     }
+
+    void updateUser(int userEditedIndex, User newUser) {
+        userList.set(userEditedIndex, newUser);
+        
+    }
 }
