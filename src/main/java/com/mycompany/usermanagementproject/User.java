@@ -9,6 +9,7 @@ package com.mycompany.usermanagementproject;
  * @author USER
  */
 public class User {
+
     private int id;
     private String login;
     private String name;
@@ -16,11 +17,10 @@ public class User {
     private char gender;
     private char role;
     private static int lastId = 1;
-    public User(String login, String name, String password, char gender, char role) {
-        this(User.lastId++,login,name,password,gender,role);
-    }
 
- 
+    public User(String login, String name, String password, char gender, char role) {
+        this(User.lastId++, login, name, password, gender, role);
+    }
 
     public User(int id, String login, String name, String password, char gender, char role) {
         this.id = id;
@@ -30,7 +30,8 @@ public class User {
         this.gender = gender;
         this.role = role;
     }
-       public int getId() {
+
+    public int getId() {
         return id;
     }
 
@@ -62,12 +63,31 @@ public class User {
         this.password = password;
     }
 
+    public String getGenderString() {
+        if (gender == 'M') {
+            return "Male";
+        } else {
+            return "Female";
+        }
+      
+    }
+
     public char getGender() {
         return gender;
     }
 
     public void setGender(char gender) {
         this.gender = gender;
+    }
+
+    public String getRoleString() {
+        if (role == 'A') {
+            return "Admin";
+        } else {
+            return "User";
+        }
+       
+
     }
 
     public char getRole() {
@@ -90,7 +110,5 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", login=" + login + ", name=" + name + ", password=" + password + ", gender=" + gender + ", role=" + role + '}';
     }
-    
-    
-    
+
 }
