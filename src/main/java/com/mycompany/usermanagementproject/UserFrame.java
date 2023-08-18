@@ -41,18 +41,38 @@ public class UserFrame extends javax.swing.JFrame {
             @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
                 User user = userService.getUser(rowIndex);
-                if (columnIndex == 0) {
-                    return user.getId();
+                switch (columnIndex) {
+                    case 0:
+                        return user.getId();
+                    case 1:
+                        return user.getLogin();
+                    case 2:
+                        return user.getName();
+                    case 3:
+                        return user.getGender();
+                    case 4:
+                        return user.getRole();
+                    default:
+                        break;
+                }
+                return "";
+            }
 
-                } else if (columnIndex == 1) {
-                    return user.getLogin();
-
-                } else if (columnIndex == 2) {
-                    return user.getName();
-                } else if (columnIndex == 3) {
-                    return user.getGender();
-                } else if (columnIndex == 4) {
-                    return user.getRole();
+            @Override
+            public String getColumnName(int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return "ID";
+                    case 1:
+                        return "Login";
+                    case 2:
+                        return "Name";
+                    case 3:
+                        return "Gender";
+                    case 4:
+                        return "Role";
+                    default:
+                        break;
                 }
                 return "";
             }
