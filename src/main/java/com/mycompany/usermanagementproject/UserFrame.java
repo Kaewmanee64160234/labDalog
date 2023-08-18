@@ -446,6 +446,7 @@ public class UserFrame extends javax.swing.JFrame {
         comboRole.setSelectedIndex(0);
         radioMale.setSelected(true);
         txtLogin.requestFocus();
+        labelId.setText("-1");
     }
 
     private void enableForm(boolean isEnable) {
