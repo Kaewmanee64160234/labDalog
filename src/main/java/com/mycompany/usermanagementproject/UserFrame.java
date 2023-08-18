@@ -26,6 +26,7 @@ public class UserFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgGender = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -80,6 +81,8 @@ public class UserFrame extends javax.swing.JFrame {
 
         comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        bgGender.add(radioMale);
+        radioMale.setSelected(true);
         radioMale.setText("Male");
         radioMale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +90,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
+        bgGender.add(radioFemale);
         radioFemale.setText("Female");
         radioFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,10 +98,15 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
-        btnSave.setBackground(new java.awt.Color(204, 255, 204));
+        btnSave.setBackground(new java.awt.Color(153, 255, 153));
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
-        btnClear.setBackground(new java.awt.Color(255, 204, 204));
+        btnClear.setBackground(new java.awt.Color(255, 153, 153));
         btnClear.setText("Clear");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -204,6 +213,18 @@ public class UserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_radioFemaleActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        System.out.println(txtLogin.getText());
+        System.out.println(txtName.getText());
+        System.out.println(txtPassword.getPassword());
+        System.out.println(comboRole.getSelectedItem());
+        System.out.println(radioFemale.isSelected());        
+        System.out.println(radioMale.isSelected());
+
+
+    }//GEN-LAST:event_btnSaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,6 +261,7 @@ public class UserFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgGender;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> comboRole;
