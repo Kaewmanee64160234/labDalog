@@ -215,13 +215,20 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        System.out.println(txtLogin.getText());
-        System.out.println(txtName.getText());
-        System.out.println(txtPassword.getPassword());
-        System.out.println(comboRole.getSelectedItem());
-        System.out.println(radioFemale.isSelected());        
-        System.out.println(radioMale.isSelected());
+        String login = txtLogin.getText();
+        String name = txtName.getText();
+        String password = new String(txtPassword.getPassword());
 
+        char role = 'U';
+        if (comboRole.getSelectedItem().equals("Admin")) {
+            role = 'A';
+        }
+        char gander = 'M';
+        if (radioFemale.isSelected()) {
+            gander = 'F';
+        }
+        User newUser = new User(login, name, password, gander, role);
+        System.out.println(newUser.toString());
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
