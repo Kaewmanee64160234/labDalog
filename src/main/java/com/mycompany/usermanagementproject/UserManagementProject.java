@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class UserManagementProject {
     public static void main(String[] args) {
-        System.out.println("com.mycompany.usermanagementproject.UserManagementProject.main()");
+        System.out.println("Hello");
     }
 
 //    public static void main(String[] args) {
